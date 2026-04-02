@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-urdu: var(--font-urdu), "Noto Sans Arabic", sans-serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
+  
+  --color-medical-blue: #0066ff;
+  --color-medical-dark: #0044cc;
+  --color-medical-light: #f0f7ff;
+  --color-medical-red: #ff3b30;
+  
+  --shadow-premium: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+  
+  --radius-premium: 6px;
+  --radius-card: 6px;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased overflow-x-hidden selection:bg-medical-blue/10 transition-colors duration-300;
+    -webkit-tap-highlight-color: transparent;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Custom scrollbar for a cleaner look */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full;
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .glass {
+    @apply bg-white/90 backdrop-blur-md border border-slate-200/50;
+  }
+  
+  .premium-card {
+    @apply bg-white rounded-card shadow-card border border-slate-200/60 transition-all active:scale-[0.99];
+  }
+
+  .input-premium {
+    @apply w-full px-3 py-2 bg-white border border-slate-200 rounded-[6px] text-sm text-slate-900 placeholder:text-slate-400 focus:border-medical-blue focus:ring-1 focus:ring-medical-blue/20 outline-none transition-all;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-medical-blue text-white rounded-[6px] text-sm font-semibold hover:bg-medical-dark active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-[6px] text-sm font-semibold hover:bg-slate-50 active:scale-[0.98] transition-all;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(0, 102, 255, 0.3);
+  }
+
+  .pulse-blue {
+    animation: pulse-blue 2s infinite;
+  }
+}
+
+@keyframes pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 102, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
