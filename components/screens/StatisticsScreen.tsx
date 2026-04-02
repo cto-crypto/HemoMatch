@@ -67,7 +67,7 @@ export default function StatisticsScreen() {
         >
           <ChevronLeft size={20} className={isRTL ? 'rotate-180' : ''} />
         </button>
-        <h1 className="text-sm font-bold text-slate-900">Global Statistics</h1>
+        <h1 className="text-sm font-bold text-slate-900">{t.stats.title}</h1>
         <div className="w-8 h-8 bg-medical-light rounded-full flex items-center justify-center">
           <BarChart3 size={16} className="text-medical-blue" />
         </div>
@@ -80,13 +80,13 @@ export default function StatisticsScreen() {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-red-50 border border-red-100 p-5 rounded-[24px] relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 p-4 opacity-10">
+          <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} p-4 opacity-10`}>
             <AlertCircle size={64} className="text-red-600" />
           </div>
           <div className="relative z-10 space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              <h3 className="text-xs font-black text-red-600 uppercase tracking-widest">Live Shortage Alert</h3>
+              <h3 className="text-xs font-black text-red-600 uppercase tracking-widest">{t.stats.shortageAlert}</h3>
             </div>
             <div className="grid grid-cols-2 gap-3">
               {SHORTAGE_DATA.map((item) => (
@@ -96,7 +96,7 @@ export default function StatisticsScreen() {
                     <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full ${
                       item.status === 'Critical' ? 'bg-red-100 text-red-600' : 'bg-orange-100 text-orange-600'
                     }`}>
-                      {item.status}
+                      {item.status === 'Critical' ? t.stats.shortageCritical : t.stats.shortageLow}
                     </span>
                   </div>
                   <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
@@ -109,7 +109,7 @@ export default function StatisticsScreen() {
                 </div>
               ))}
             </div>
-            <p className="text-[10px] text-red-600/70 italic">Simulated real-time data for educational purposes.</p>
+            <p className="text-[10px] text-red-600/70 italic">{t.stats.shortageSimulated}</p>
           </div>
         </motion.div>
 
@@ -124,8 +124,8 @@ export default function StatisticsScreen() {
               <PieChartIcon size={16} className="text-red-600" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Global Distribution</h2>
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Percentage by Blood Type</p>
+              <h2 className="text-base font-bold text-slate-900">{t.stats.globalDistribution}</h2>
+              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{t.stats.percentByType}</p>
             </div>
           </div>
 
@@ -168,8 +168,8 @@ export default function StatisticsScreen() {
               <Globe size={16} className="text-blue-600" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Regional Comparison</h2>
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">ABO Distribution by Region</p>
+              <h2 className="text-base font-bold text-slate-900">{t.stats.regionalComparison}</h2>
+              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{t.stats.aboByRegion}</p>
             </div>
           </div>
 
@@ -204,8 +204,8 @@ export default function StatisticsScreen() {
               <Table size={16} className="text-purple-600" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Compatibility Matrix</h2>
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Who can give to whom</p>
+              <h2 className="text-base font-bold text-slate-900">{t.stats.donorRecip}</h2>
+              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{t.stats.rowsDonorColsRecip}</p>
             </div>
           </div>
 
@@ -213,7 +213,7 @@ export default function StatisticsScreen() {
             <table className="w-full text-[9px] border-collapse">
               <thead>
                 <tr>
-                  <th className="p-1 border border-slate-100 bg-slate-50">Donor \ Recip</th>
+                  <th className="p-1 border border-slate-100 bg-slate-50">{t.stats.donorRecipHeader}</th>
                   {['O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+'].map(type => (
                     <th key={type} className="p-1 border border-slate-100 bg-slate-50 font-bold">{type}</th>
                   ))}
@@ -261,7 +261,7 @@ export default function StatisticsScreen() {
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-[8px] text-slate-400 text-center uppercase tracking-widest font-bold">Rows: Donor | Columns: Recipient</p>
+          <p className="mt-4 text-[8px] text-slate-400 text-center uppercase tracking-widest font-bold">{t.stats.matrixLegend}</p>
         </motion.div>
 
         {/* Fun Fact Card */}
@@ -271,18 +271,18 @@ export default function StatisticsScreen() {
           transition={{ delay: 0.2 }}
           className="bg-medical-blue p-6 rounded-[24px] text-white relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-xl" />
+          <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} w-32 h-32 bg-white/10 rounded-full ${isRTL ? '-ml-16' : '-mr-16'} -mt-16 blur-xl`} />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp size={20} />
-              <h3 className="text-lg font-bold">Growth Trends</h3>
+              <h3 className="text-lg font-bold">{t.stats.growthTrends}</h3>
             </div>
             <p className="text-sm text-white/80 leading-relaxed mb-4">
-              Blood group distribution changes slowly over generations due to migration and genetic factors. Type O remains the most resilient and widespread globally.
+              {t.stats.growthTrendsDesc}
             </p>
             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60">
               <Info size={12} />
-              Source: World Health Organization
+              {t.stats.sourceWho}
             </div>
           </div>
         </motion.div>
@@ -296,9 +296,9 @@ export default function StatisticsScreen() {
             <div className="w-12 h-12 bg-medical-light rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
               <Droplets size={24} className="text-medical-blue" />
             </div>
-            <div className="text-left">
-              <h3 className="text-base font-bold text-slate-900">Compatibility Matrix</h3>
-              <p className="text-xs text-slate-500">Check who can give to whom</p>
+            <div className="text-start">
+              <h3 className="text-base font-bold text-slate-900">{t.stats.donorRecip}</h3>
+              <p className="text-xs text-slate-500">{t.stats.rowsDonorColsRecip}</p>
             </div>
           </div>
           <ChevronLeft size={20} className={`text-slate-300 group-hover:text-medical-blue transition-all rotate-180`} />

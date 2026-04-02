@@ -137,7 +137,7 @@ export default function CardGeneratorScreen() {
               
               {/* Card Header */}
               <div className="bg-medical-blue p-5 flex justify-between items-start relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-xl" />
+                <div className="absolute top-0 end-0 w-32 h-32 bg-white/10 rounded-full -me-16 -mt-16 blur-xl" />
                 <div className="relative z-10 space-y-0.5">
                   <p className="text-[9px] font-black text-white/60 tracking-[0.3em] uppercase">
                     {t.card.idLabel}
@@ -165,7 +165,7 @@ export default function CardGeneratorScreen() {
                         {t.card.form.name}
                       </p>
                       <p className="text-base font-bold text-slate-900 leading-tight">
-                        {formData.name || 'Your Name'}
+                        {formData.name || t.card.yourName}
                       </p>
                     </div>
                     <div className="flex gap-8">
@@ -199,7 +199,7 @@ export default function CardGeneratorScreen() {
                       <span className="text-3xl font-black text-medical-blue relative z-10 drop-shadow-sm">
                         {formData.bloodGroup}
                       </span>
-                      <div className="absolute bottom-1 right-1 opacity-0 group-hover/badge:opacity-100 transition-opacity">
+                      <div className="absolute bottom-1 end-1 opacity-0 group-hover/badge:opacity-100 transition-opacity">
                         <Info size={10} className="text-medical-blue/40" />
                       </div>
                     </button>
@@ -220,13 +220,13 @@ export default function CardGeneratorScreen() {
                     >
                       <button 
                         onClick={() => setShowCompatibility(false)}
-                        className="absolute top-2 right-2 text-slate-400 hover:text-slate-600"
+                        className="absolute top-2 end-2 text-slate-400 hover:text-slate-600"
                       >
                         <X size={16} />
                       </button>
                       <div className="space-y-3">
                         <div className="space-y-1">
-                          <p className="text-[8px] font-bold text-medical-blue uppercase tracking-widest">Can Give To</p>
+                          <p className="text-[8px] font-bold text-medical-blue uppercase tracking-widest">{t.card.canGiveTo}</p>
                           <div className="flex flex-wrap gap-1">
                             {bloodData.donateTo.map(g => (
                               <span key={g} className="px-1.5 py-0.5 bg-medical-light text-medical-blue rounded-[4px] text-[9px] font-bold">{g}</span>
@@ -234,7 +234,7 @@ export default function CardGeneratorScreen() {
                           </div>
                         </div>
                         <div className="space-y-1">
-                          <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Can Receive From</p>
+                          <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest">{t.card.canReceiveFrom}</p>
                           <div className="flex flex-wrap gap-1">
                             {bloodData.receiveFrom.map(g => (
                               <span key={g} className="px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded-[4px] text-[9px] font-bold">{g}</span>
@@ -242,7 +242,7 @@ export default function CardGeneratorScreen() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-[8px] text-slate-400 italic text-center">Tap anywhere to close</p>
+                      <p className="text-[8px] text-slate-400 italic text-center">{t.card.tapToClose}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -262,7 +262,7 @@ export default function CardGeneratorScreen() {
                       </p>
                     </div>
                     {!revealEmergency && (
-                      <span className="text-[8px] font-bold text-slate-400 animate-pulse uppercase">Tap to reveal</span>
+                      <span className="text-[8px] font-bold text-slate-400 animate-pulse uppercase">{t.card.tapToReveal}</span>
                     )}
                   </div>
                   
@@ -306,7 +306,7 @@ export default function CardGeneratorScreen() {
                 <div className="flex items-center gap-2">
                   <ShieldCheck size={12} className="text-medical-blue" />
                   <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">
-                    HemoMatch Medical ID
+                    {t.card.hemoMatchId}
                   </span>
                 </div>
                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-200">
@@ -320,8 +320,8 @@ export default function CardGeneratorScreen() {
         {/* Form Section */}
         <div className="space-y-6">
           <div className="text-center space-y-1">
-            <h2 className="text-lg font-bold text-slate-900">Personalize Your ID</h2>
-            <p className="text-xs text-slate-500">Fill in your details to update the card live</p>
+            <h2 className="text-lg font-bold text-slate-900">{t.card.personalizeId}</h2>
+            <p className="text-xs text-slate-500">{t.card.fillDetails}</p>
           </div>
 
           <form className="space-y-6">
@@ -332,15 +332,15 @@ export default function CardGeneratorScreen() {
                   {t.card.form.name}
                 </label>
                 <div className="relative group">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
+                  <User className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
                   <input
                     required
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="input-premium pl-9 focus:ring-2 focus:ring-medical-blue/10"
-                    placeholder="John Doe"
+                    className="input-premium ps-9 focus:ring-2 focus:ring-medical-blue/10"
+                    placeholder={t.card.placeholders.name}
                   />
                 </div>
               </div>
@@ -352,12 +352,12 @@ export default function CardGeneratorScreen() {
                     {t.card.form.bloodGroup}
                   </label>
                   <div className="relative group">
-                    <Droplets className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
+                    <Droplets className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
                     <select
                       name="bloodGroup"
                       value={formData.bloodGroup}
                       onChange={handleInputChange}
-                      className="input-premium pl-9 appearance-none focus:ring-2 focus:ring-medical-blue/10"
+                      className="input-premium ps-9 appearance-none focus:ring-2 focus:ring-medical-blue/10"
                     >
                       {BLOOD_GROUPS.map(bg => (
                         <option key={bg.id} value={bg.id}>{bg.id}</option>
@@ -370,14 +370,14 @@ export default function CardGeneratorScreen() {
                     {t.card.form.age}
                   </label>
                   <div className="relative group">
-                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
+                    <Calendar className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
                     <input
                       type="number"
                       name="age"
                       value={formData.age}
                       onChange={handleInputChange}
-                      className="input-premium pl-9 focus:ring-2 focus:ring-medical-blue/10"
-                      placeholder="25"
+                      className="input-premium ps-9 focus:ring-2 focus:ring-medical-blue/10"
+                      placeholder={t.card.placeholders.age}
                     />
                   </div>
                 </div>
@@ -390,14 +390,14 @@ export default function CardGeneratorScreen() {
                     {t.card.form.phone}
                   </label>
                   <div className="relative group">
-                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
+                    <Phone className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="input-premium pl-9 focus:ring-2 focus:ring-medical-blue/10"
-                      placeholder="+1 234 567 890"
+                      className="input-premium ps-9 focus:ring-2 focus:ring-medical-blue/10"
+                      placeholder={t.card.placeholders.phone}
                     />
                   </div>
                 </div>
@@ -406,14 +406,14 @@ export default function CardGeneratorScreen() {
                     {t.card.form.location}
                   </label>
                   <div className="relative group">
-                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
+                    <MapPin className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-medical-blue transition-colors" size={14} />
                     <input
                       type="text"
                       name="location"
                       value={formData.location}
                       onChange={handleInputChange}
-                      className="input-premium pl-9 focus:ring-2 focus:ring-medical-blue/10"
-                      placeholder="New York, USA"
+                      className="input-premium ps-9 focus:ring-2 focus:ring-medical-blue/10"
+                      placeholder={t.card.placeholders.location}
                     />
                   </div>
                 </div>
@@ -438,7 +438,7 @@ export default function CardGeneratorScreen() {
                       value={formData.emergencyName}
                       onChange={handleInputChange}
                       className="input-premium focus:ring-2 focus:ring-medical-blue/10"
-                      placeholder="Jane Doe"
+                      placeholder={t.card.placeholders.emergencyName}
                     />
                   </div>
                   <div className="space-y-2">
@@ -451,7 +451,7 @@ export default function CardGeneratorScreen() {
                       value={formData.emergencyPhone}
                       onChange={handleInputChange}
                       className="input-premium focus:ring-2 focus:ring-medical-blue/10"
-                      placeholder="+1 987 654 321"
+                      placeholder={t.card.placeholders.emergencyPhone}
                     />
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default function CardGeneratorScreen() {
                   value={formData.medicalNote}
                   onChange={handleInputChange}
                   className="input-premium min-h-[100px] resize-none focus:ring-2 focus:ring-medical-blue/10"
-                  placeholder="Any allergies or medical conditions..."
+                  placeholder={t.card.placeholders.medicalNote}
                 />
               </div>
             </div>

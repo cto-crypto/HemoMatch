@@ -41,7 +41,7 @@ export default function MoreScreen() {
       <section className="space-y-4">
         <div className="space-y-1">
           <h2 className="text-xl font-bold text-slate-900 tracking-tight">{t.more.title}</h2>
-          <p className="text-xs text-slate-500">App settings and resources</p>
+          <p className="text-xs text-slate-500">{t.more.settingsResources}</p>
         </div>
 
         <div className="grid grid-cols-1 gap-2">
@@ -53,9 +53,9 @@ export default function MoreScreen() {
             <div className="w-10 h-10 bg-medical-light rounded-[6px] flex items-center justify-center text-medical-blue shrink-0">
               <Calendar size={20} />
             </div>
-            <div className="flex-1 text-left">
+            <div className="flex-1 text-start">
               <h4 className="text-sm font-bold text-slate-900">{t.more.tracker}</h4>
-              <p className="text-[10px] text-slate-500">Track your eligibility</p>
+              <p className="text-[10px] text-slate-500">{t.more.trackEligibility}</p>
             </div>
             <ChevronRight size={16} className={`text-slate-300 transition-transform ${showDonationTracker ? 'rotate-90' : ''}`} />
           </button>
@@ -102,9 +102,9 @@ export default function MoreScreen() {
             <div className="w-10 h-10 bg-medical-light rounded-[6px] flex items-center justify-center text-medical-blue shrink-0">
               <Droplets size={20} />
             </div>
-            <div className="flex-1 text-left">
+            <div className="flex-1 text-start">
               <h4 className="text-sm font-bold text-slate-900">{t.card.title}</h4>
-              <p className="text-[10px] text-slate-500">Digital emergency ID</p>
+              <p className="text-[10px] text-slate-500">{t.more.digitalId}</p>
             </div>
             <ChevronRight size={16} className="text-slate-300" />
           </button>
@@ -113,9 +113,9 @@ export default function MoreScreen() {
             <div className="w-10 h-10 bg-medical-light rounded-[6px] flex items-center justify-center text-medical-blue shrink-0">
               <UserCheck size={20} />
             </div>
-            <div className="flex-1 text-left">
+            <div className="flex-1 text-start">
               <h4 className="text-sm font-bold text-slate-900">{t.more.eligibility}</h4>
-              <p className="text-[10px] text-slate-500">Check if you can donate</p>
+              <p className="text-[10px] text-slate-500">{t.more.checkEligibility}</p>
             </div>
             <ChevronRight size={16} className="text-slate-300" />
           </div>
@@ -124,7 +124,7 @@ export default function MoreScreen() {
             <div className="w-10 h-10 bg-medical-light rounded-[6px] flex items-center justify-center text-medical-blue shrink-0">
               <Globe size={20} />
             </div>
-            <div className="flex-1 text-left">
+            <div className="flex-1 text-start">
               <h4 className="text-sm font-bold text-slate-900">{t.more.language}</h4>
               <p className="text-[10px] text-slate-500">English / اردو</p>
             </div>
@@ -140,7 +140,7 @@ export default function MoreScreen() {
       <section className="space-y-4">
         <div className="flex items-center gap-2 px-1">
           <HelpCircle size={14} className="text-slate-300" />
-          <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Resources</h3>
+          <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{t.more.resources}</h3>
         </div>
         
         <div className="grid grid-cols-1 gap-3">
@@ -157,7 +157,7 @@ export default function MoreScreen() {
               <Info size={14} />
               <h4 className="text-xs font-bold uppercase tracking-wider">{t.more.about}</h4>
             </div>
-            <p className="text-[11px] text-slate-500 leading-relaxed">HemoMatch is a premium medical utility designed to simplify blood group compatibility and provide emergency identification tools.</p>
+            <p className="text-[11px] text-slate-500 leading-relaxed">{t.more.appDescription}</p>
           </div>
         </div>
       </section>
@@ -166,7 +166,7 @@ export default function MoreScreen() {
       <div className="flex flex-col items-center justify-center gap-4 pt-8 pb-4">
         <div className="flex items-center gap-2 text-slate-300">
           <Heart size={14} fill="currentColor" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">HemoMatch v1.0</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">{t.more.version}</span>
         </div>
         <button className="btn-secondary w-full flex items-center justify-center gap-2">
           <Share2 size={16} />

@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { activeScreen } = useNavigation();
   const [mounted, setMounted] = useState(false);
 
@@ -30,7 +30,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-base tracking-tight text-slate-900 leading-none">HemoMatch</span>
-                <span className="text-[8px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">Blood Guide</span>
+                <span className="text-[8px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">{t.home.bloodGuide}</span>
               </div>
             </div>
             

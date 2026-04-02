@@ -17,7 +17,7 @@ export default function BottomNav() {
   const navItems: { id: Screen; icon: any; label: string }[] = [
     { id: 'home', icon: Home, label: t.tabs.home },
     { id: 'checker', icon: Search, label: t.tabs.checker },
-    { id: 'statistics', icon: BarChart3, label: 'Stats' },
+    { id: 'statistics', icon: BarChart3, label: t.more.rarity },
     { id: 'learn', icon: BookOpen, label: t.tabs.learn },
     { id: 'more', icon: MoreHorizontal, label: t.tabs.more },
   ];

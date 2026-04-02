@@ -25,7 +25,7 @@ export default function CheckerScreen() {
       <section className="space-y-4">
         <div className="space-y-1">
           <h2 className="text-xl font-bold text-slate-900 tracking-tight">{t.checker.step1}</h2>
-          <p className="text-xs text-slate-500">Pick a blood type to see compatibility</p>
+          <p className="text-xs text-slate-500">{t.checker.pickBloodType}</p>
         </div>
         
         <div className="grid grid-cols-4 gap-2">
@@ -60,7 +60,7 @@ export default function CheckerScreen() {
           >
             {/* Compatibility Result Card */}
             <div className="premium-card p-5 space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-medical-blue/5 rounded-full -mr-12 -mt-12" />
+              <div className="absolute top-0 end-0 w-24 h-24 bg-medical-blue/5 rounded-full -me-12 -mt-12" />
               
               <div className="flex items-center gap-4 pb-4 border-b border-slate-100">
                 <div className="w-12 h-12 bg-medical-blue rounded-[8px] flex items-center justify-center text-white shadow-inner">
@@ -68,7 +68,7 @@ export default function CheckerScreen() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">{t.checker.step2}</h3>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-widest">Live Compatibility Map</p>
+                  <p className="text-[10px] text-slate-400 uppercase tracking-widest">{t.checker.liveCompatibilityMap}</p>
                 </div>
               </div>
 
@@ -80,7 +80,7 @@ export default function CheckerScreen() {
                       <ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />
                       <span className="text-[11px] font-bold uppercase tracking-wider">{t.checker.giveTo}</span>
                     </div>
-                    <span className="text-[10px] font-bold text-slate-400">{bloodData.donateTo.length} Groups</span>
+                    <span className="text-[10px] font-bold text-slate-400">{bloodData.donateTo.length} {t.checker.groupsCount}</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {bloodData.donateTo.map(group => (
@@ -95,7 +95,7 @@ export default function CheckerScreen() {
                     ))}
                   </div>
                   <p className="text-[10px] text-slate-500 leading-relaxed bg-slate-50 p-2 rounded-[4px]">
-                    <b>Why?</b> {selectedGroup} can donate to these groups because they share compatible antigens.
+                    <b>{isRTL ? 'کیوں؟' : 'Why?'}</b> {selectedGroup} {t.checker.whyDonate}
                   </p>
                 </div>
 
@@ -106,7 +106,7 @@ export default function CheckerScreen() {
                       <ArrowRight size={14} className={`rotate-90 ${isRTL ? 'rotate-[270deg]' : ''}`} />
                       <span className="text-[11px] font-bold uppercase tracking-wider">{t.checker.receiveFrom}</span>
                     </div>
-                    <span className="text-[10px] font-bold text-slate-400">{bloodData.receiveFrom.length} Groups</span>
+                    <span className="text-[10px] font-bold text-slate-400">{bloodData.receiveFrom.length} {t.checker.groupsCount}</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {bloodData.receiveFrom.map(group => (
@@ -121,7 +121,7 @@ export default function CheckerScreen() {
                     ))}
                   </div>
                   <p className="text-[10px] text-slate-500 leading-relaxed bg-slate-50 p-2 rounded-[4px]">
-                    <b>Why?</b> {selectedGroup} can safely receive blood from these donors without an immune reaction.
+                    <b>{isRTL ? 'کیوں؟' : 'Why?'}</b> {selectedGroup} {t.checker.whyReceive}
                   </p>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function CheckerScreen() {
                 <Lightbulb size={20} />
               </div>
               <div className="space-y-0.5">
-                <p className="text-[10px] font-bold text-medical-blue uppercase tracking-widest">Expert Insight</p>
+                <p className="text-[10px] font-bold text-medical-blue uppercase tracking-widest">{t.checker.expertInsight}</p>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   {t.checker.supportiveNote}
                 </p>
@@ -146,8 +146,8 @@ export default function CheckerScreen() {
               <Droplets size={40} />
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-bold text-slate-400">Select a blood group</p>
-              <p className="text-xs text-slate-300">Discover compatibility secrets</p>
+              <p className="text-sm font-bold text-slate-400">{t.checker.selectGroup}</p>
+              <p className="text-xs text-slate-300">{t.checker.discoverSecrets}</p>
             </div>
           </div>
         )}

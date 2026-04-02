@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-urdu: var(--font-urdu), "Noto Sans Arabic", sans-serif;
+  --font-urdu: var(--font-urdu-nastaliq), var(--font-urdu-sans), "Noto Nastaliq Urdu", "Noto Sans Arabic", serif;
   --font-sans: var(--font-inter), "Inter", sans-serif;
   
   --color-medical-blue: #0066ff;
@@ -14,6 +14,14 @@
   
   --radius-premium: 6px;
   --radius-card: 6px;
+}
+
+[dir="rtl"] .font-urdu {
+  font-family: var(--font-urdu);
+  line-height: 2.0;
+  letter-spacing: 0;
+  font-size: 1.02em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "ss02", "ss03";
 }
 
 @layer base {

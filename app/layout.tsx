@@ -1,5 +1,5 @@
 import type {Metadata, Viewport} from 'next';
-import { Inter, Noto_Sans_Arabic } from 'next/font/google';
+import { Inter, Noto_Sans_Arabic, Noto_Nastaliq_Urdu } from 'next/font/google';
 import './globals.css';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { NavigationProvider } from '@/context/NavigationContext';
@@ -12,11 +12,18 @@ const inter = Inter({
   display: 'swap',
 });
 
-const urdu = Noto_Sans_Arabic({
+const urduSans = Noto_Sans_Arabic({
   subsets: ['arabic'],
-  variable: '--font-urdu',
+  variable: '--font-urdu-sans',
   display: 'swap',
   weight: ['400', '700', '900'],
+});
+
+const urduNastaliq = Noto_Nastaliq_Urdu({
+  subsets: ['arabic'],
+  variable: '--font-urdu-nastaliq',
+  display: 'swap',
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -40,7 +47,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${inter.variable} ${urdu.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${urduSans.variable} ${urduNastaliq.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning className="bg-slate-50 dark:bg-slate-950">
         <ThemeProvider>
           <LanguageProvider>

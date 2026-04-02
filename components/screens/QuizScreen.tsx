@@ -84,19 +84,19 @@ export default function QuizScreen() {
             <Trophy size={48} className="text-yellow-600" />
           </motion.div>
           
-          <h2 className="text-2xl font-black text-slate-900 mb-2">Quiz Completed!</h2>
+          <h2 className="text-2xl font-black text-slate-900 mb-2">{isRTL ? 'کوئز مکمل ہو گیا!' : 'Quiz Completed!'}</h2>
           <p className="text-slate-500 mb-8 text-center">
-            You&apos;ve finished the HemoMatch Blood Knowledge Challenge.
+            {isRTL ? 'آپ نے ہیمو میچ بلڈ نالج چیلنج مکمل کر لیا ہے۔' : "You've finished the HemoMatch Blood Knowledge Challenge."}
           </p>
 
           <div className="grid grid-cols-2 gap-4 w-full max-w-xs mb-8">
             <div className="bg-white p-4 rounded-2xl border border-slate-200 text-center">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Score</p>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{isRTL ? 'اسکور' : 'Score'}</p>
               <p className="text-2xl font-black text-medical-blue">{score}/{quizSet.length}</p>
             </div>
             <div className="bg-white p-4 rounded-2xl border border-slate-200 text-center">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Time</p>
-              <p className="text-2xl font-black text-slate-700">{timeTaken}s</p>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{isRTL ? 'وقت' : 'Time'}</p>
+              <p className="text-2xl font-black text-slate-700">{timeTaken}{isRTL ? ' سیکنڈ' : 's'}</p>
             </div>
           </div>
 
@@ -106,13 +106,13 @@ export default function QuizScreen() {
               className="btn-primary w-full py-4 flex items-center justify-center gap-2"
             >
               <RotateCcw size={18} />
-              Try Again
+              {isRTL ? 'دوبارہ کوشش کریں' : 'Try Again'}
             </button>
             <button 
               onClick={() => setActiveScreen('home')}
               className="w-full py-4 text-slate-600 font-bold hover:bg-slate-100 rounded-xl transition-all"
             >
-              Back to Home
+              {isRTL ? 'ہوم پر واپس جائیں' : 'Back to Home'}
             </button>
           </div>
         </div>
@@ -131,8 +131,8 @@ export default function QuizScreen() {
           <ChevronLeft size={20} className={isRTL ? 'rotate-180' : ''} />
         </button>
         <div className="flex flex-col items-center">
-          <h1 className="text-xs font-black text-slate-400 uppercase tracking-widest">Question</h1>
-          <p className="text-sm font-bold text-slate-900">{currentQuestionIndex + 1} of {quizSet.length}</p>
+          <h1 className="text-xs font-black text-slate-400 uppercase tracking-widest">{isRTL ? 'سوال' : 'Question'}</h1>
+          <p className="text-sm font-bold text-slate-900">{currentQuestionIndex + 1} {isRTL ? 'میں سے' : 'of'} {quizSet.length}</p>
         </div>
         <div className="w-8 h-8 bg-medical-light rounded-full flex items-center justify-center">
           <Brain size={16} className="text-medical-blue" />
@@ -152,7 +152,7 @@ export default function QuizScreen() {
         {/* Question */}
         <div className="mb-8">
           <h2 className="text-xl font-bold text-slate-900 leading-tight">
-            {currentQuestion.question}
+            {isRTL ? currentQuestion.questionUr : currentQuestion.question}
           </h2>
         </div>
 
@@ -188,9 +188,9 @@ export default function QuizScreen() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleOptionSelect(index)}
                 disabled={isAnswered}
-                className={`w-full p-4 rounded-2xl border-2 text-left transition-all flex items-center justify-between ${borderColor} ${bgColor} ${textColor}`}
+                className={`w-full p-4 rounded-2xl border-2 text-start transition-all flex items-center justify-between ${borderColor} ${bgColor} ${textColor}`}
               >
-                <span className="font-bold">{option}</span>
+                <span className="font-bold">{isRTL ? currentQuestion.optionsUr[index] : option}</span>
                 {isAnswered && isCorrect && <CheckCircle2 size={20} className="text-green-500" />}
                 {isAnswered && isSelected && !isCorrect && <XCircle size={20} className="text-red-500" />}
               </motion.button>
@@ -206,9 +206,9 @@ export default function QuizScreen() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-6 p-4 bg-slate-100 rounded-2xl border border-slate-200"
             >
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Explanation</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{isRTL ? 'وضاحت' : 'Explanation'}</p>
               <p className="text-sm text-slate-600 leading-relaxed">
-                {currentQuestion.explanation}
+                {isRTL ? currentQuestion.explanationUr : currentQuestion.explanation}
               </p>
             </motion.div>
           )}
@@ -226,15 +226,17 @@ export default function QuizScreen() {
                 : 'bg-medical-blue text-white shadow-medical-blue/20'
               }`}
             >
-              Confirm Answer
+              {isRTL ? 'جواب کی تصدیق کریں' : 'Confirm Answer'}
             </button>
           ) : (
             <button 
               onClick={handleNextQuestion}
               className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
             >
-              {currentQuestionIndex === quizSet.length - 1 ? 'Finish Quiz' : 'Next Question'}
-              <ArrowRight size={18} />
+              {currentQuestionIndex === quizSet.length - 1 
+                ? (isRTL ? 'کوئز ختم کریں' : 'Finish Quiz') 
+                : (isRTL ? 'اگلا سوال' : 'Next Question')}
+              <ArrowRight size={18} className={isRTL ? 'rotate-180' : ''} />
             </button>
           )}
         </div>

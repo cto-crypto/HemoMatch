@@ -17,7 +17,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function HomeScreen() {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
   const { setActiveScreen } = useNavigation();
 
   const container = {
@@ -45,7 +45,7 @@ export default function HomeScreen() {
       {/* Hero Section */}
       <motion.section variants={item} className="space-y-4">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight leading-tight">
+          <h2 className={`font-bold text-slate-900 tracking-tight leading-tight ${isRTL ? 'text-2xl' : 'text-3xl'}`}>
             {t.home.welcome}
           </h2>
           <p className="text-sm text-slate-500 leading-relaxed max-w-[280px]">
@@ -58,7 +58,7 @@ export default function HomeScreen() {
           className="btn-primary w-full flex items-center justify-center gap-2 py-4 shadow-lg shadow-medical-blue/20 group"
         >
           {t.home.cta}
-          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          <ArrowRight size={18} className={`transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
         </button>
       </motion.section>
 
@@ -68,7 +68,7 @@ export default function HomeScreen() {
           <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
             {t.home.quickSelect}
           </h3>
-          <span className="text-[10px] text-medical-blue font-bold animate-pulse">Tap to explore</span>
+          <span className="text-[10px] text-medical-blue font-bold animate-pulse">{t.home.tapToExplore}</span>
         </div>
         <div className="grid grid-cols-4 gap-2">
           {BLOOD_GROUPS.map((bg) => (
@@ -91,8 +91,8 @@ export default function HomeScreen() {
         <div className="premium-card p-6 bg-white border-slate-200 flex flex-col items-center text-center space-y-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-medical-blue/5 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-slate-900">Community Impact</h3>
-            <p className="text-xs text-slate-500">Tap the drop to simulate a donation</p>
+            <h3 className="text-base font-bold text-slate-900">{t.home.impactTitle}</h3>
+            <p className="text-xs text-slate-500">{t.home.impactSubtitle}</p>
           </div>
           
           <div className="relative">
@@ -137,7 +137,7 @@ export default function HomeScreen() {
 
           <div className="space-y-1">
             <p className="text-2xl font-black text-medical-blue">1,248,392</p>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Simulated Lives Saved</p>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t.home.impactCounter}</p>
           </div>
         </div>
       </motion.section>
@@ -145,22 +145,22 @@ export default function HomeScreen() {
       {/* Educational Fact Card */}
       <motion.section variants={item}>
         <div className="premium-card p-4 bg-gradient-to-br from-medical-blue to-blue-700 text-white relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute top-0 end-0 w-32 h-32 bg-white/10 rounded-full -me-16 -mt-16 blur-2xl group-hover:scale-110 transition-transform duration-700" />
           <div className="relative z-10 space-y-3">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                 <Info size={12} />
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">Did you know?</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">{t.home.didYouKnow}</span>
             </div>
             <p className="text-sm font-medium leading-relaxed">
-              Blood is actually <b>living tissue</b>. It carries oxygen, nutrients, and helps fight infections.
+              {t.home.factText}
             </p>
             <button 
               onClick={() => setActiveScreen('learn')}
               className="text-[11px] font-bold underline underline-offset-4 hover:opacity-80 transition-opacity"
             >
-              Learn more about blood groups
+              {t.home.learnMore}
             </button>
           </div>
         </div>
@@ -175,11 +175,11 @@ export default function HomeScreen() {
           <div className="w-12 h-12 bg-medical-blue/10 rounded-[8px] flex items-center justify-center text-medical-blue group-hover:scale-110 transition-transform">
             <Contact size={24} />
           </div>
-          <div className="flex-1 text-left">
+          <div className="flex-1 text-start">
             <h4 className="text-sm font-bold text-slate-900">{t.card.title}</h4>
             <p className="text-[10px] text-slate-500">{t.card.subtitle}</p>
           </div>
-          <ChevronRight size={18} className="text-slate-300 group-hover:translate-x-1 transition-transform" />
+          <ChevronRight size={18} className={`text-slate-300 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
         </button>
 
         <button 
@@ -189,11 +189,11 @@ export default function HomeScreen() {
           <div className="w-12 h-12 bg-blue-50 rounded-[8px] flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
             <BarChart3 size={24} />
           </div>
-          <div className="flex-1 text-left">
-            <h4 className="text-sm font-bold text-slate-900">Global Statistics</h4>
-            <p className="text-[10px] text-slate-500">Explore blood type distribution worldwide</p>
+          <div className="flex-1 text-start">
+            <h4 className="text-sm font-bold text-slate-900">{t.home.statsTitle}</h4>
+            <p className="text-[10px] text-slate-500">{t.home.statsSubtitle}</p>
           </div>
-          <ChevronRight size={18} className="text-slate-300 group-hover:translate-x-1 transition-transform" />
+          <ChevronRight size={18} className={`text-slate-300 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
         </button>
 
         <div className="grid grid-cols-2 gap-3">
@@ -221,7 +221,7 @@ export default function HomeScreen() {
       {/* Trust Badge */}
       <motion.div variants={item} className="flex items-center justify-center gap-2 pt-4">
         <ShieldCheck size={14} className="text-slate-300" />
-        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Verified Medical Info</span>
+        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{t.home.verified}</span>
       </motion.div>
     </motion.div>
   );

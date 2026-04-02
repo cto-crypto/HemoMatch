@@ -18,7 +18,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function LearnScreen() {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
   const { setActiveScreen } = useNavigation();
   const [activeTab, setActiveTab] = React.useState<'basics' | 'myths' | 'quiz'>('basics');
 
@@ -40,7 +40,7 @@ export default function LearnScreen() {
       <section className="space-y-4">
         <div className="space-y-1">
           <h2 className="text-xl font-bold text-slate-900 tracking-tight">{t.learn.title}</h2>
-          <p className="text-xs text-slate-500">Interactive guide to blood groups</p>
+          <p className="text-xs text-slate-500">{t.learn.interactiveGuide}</p>
         </div>
 
         {/* Custom Tabs */}
@@ -55,7 +55,7 @@ export default function LearnScreen() {
                   : 'text-slate-400 hover:text-slate-600'
               }`}
             >
-              {tab}
+              {tab === 'basics' ? t.learn.basicsTab : tab === 'myths' ? t.learn.mythsTab : t.learn.quizTab}
             </button>
           ))}
         </div>
@@ -75,7 +75,7 @@ export default function LearnScreen() {
                   <Droplets size={24} />
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-sm font-bold text-slate-900">ABO System</h4>
+                  <h4 className="text-sm font-bold text-slate-900">{t.learn.aboSystem}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{t.learn.simpleAbo}</p>
                 </div>
               </motion.div>
@@ -85,7 +85,7 @@ export default function LearnScreen() {
                   <Heart size={24} />
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-sm font-bold text-slate-900">Rh Factor</h4>
+                  <h4 className="text-sm font-bold text-slate-900">{t.learn.rhFactor}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{t.learn.simpleRh}</p>
                 </div>
               </motion.div>
@@ -95,7 +95,7 @@ export default function LearnScreen() {
                   <ShieldCheck size={24} />
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-sm font-bold text-slate-900">Why it Matters</h4>
+                  <h4 className="text-sm font-bold text-slate-900">{t.learn.whyMatters}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{t.learn.whyMatters}</p>
                 </div>
               </motion.div>
@@ -111,22 +111,22 @@ export default function LearnScreen() {
               exit="hidden"
               className="space-y-4"
             >
-              {t.myths.items.map((item, idx) => (
+              {t.myths.items.map((mythItem, idx) => (
                 <motion.div key={idx} variants={item} className="premium-card p-5 space-y-4 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-medical-red/5 rounded-full -mr-8 -mt-8" />
+                  <div className="absolute top-0 end-0 w-16 h-16 bg-medical-red/5 rounded-full -me-8 -mt-8" />
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-slate-400">
                       <AlertTriangle size={12} className="text-medical-red" />
-                      <span className="text-[9px] font-bold uppercase tracking-widest">Common Myth</span>
+                      <span className="text-[9px] font-bold uppercase tracking-widest">{t.learn.commonMyth}</span>
                     </div>
-                    <p className="text-xs font-medium text-slate-500 line-through decoration-slate-300 italic">{item.myth}</p>
+                    <p className="text-xs font-medium text-slate-500 line-through decoration-slate-300 italic">{mythItem.myth}</p>
                   </div>
                   <div className="space-y-2 pt-3 border-t border-slate-100">
                     <div className="flex items-center gap-2 text-medical-blue">
                       <Check size={12} />
-                      <span className="text-[9px] font-bold uppercase tracking-widest">Medical Reality</span>
+                      <span className="text-[9px] font-bold uppercase tracking-widest">{t.learn.medicalReality}</span>
                     </div>
-                    <p className="text-sm font-bold text-slate-900 leading-relaxed">{item.reality}</p>
+                    <p className="text-sm font-bold text-slate-900 leading-relaxed">{mythItem.reality}</p>
                   </div>
                 </motion.div>
               ))}
@@ -144,9 +144,9 @@ export default function LearnScreen() {
                 <BookOpen size={32} />
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold text-slate-900">Test Your Knowledge</h3>
+                <h3 className="text-lg font-bold text-slate-900">{t.learn.testKnowledge}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  Ready to see how much you&apos;ve learned about blood groups? Take our interactive quiz.
+                  {t.learn.quizDesc}
                 </p>
               </div>
               <button 
@@ -154,9 +154,9 @@ export default function LearnScreen() {
                 className="btn-primary w-full py-4 shadow-lg shadow-medical-blue/20 flex items-center justify-center gap-2"
               >
                 <Brain size={18} />
-                Start Quiz
+                {t.learn.startQuiz}
               </button>
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest">10 Random Questions per Session</p>
+              <p className="text-[10px] text-slate-400 uppercase tracking-widest">{t.learn.randomQuestions}</p>
             </motion.div>
           )}
         </AnimatePresence>

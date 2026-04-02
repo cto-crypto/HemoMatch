@@ -15,6 +15,17 @@ export interface Translation {
     quickSelect: string;
     universalDonor: string;
     universalRecipient: string;
+    impactTitle: string;
+    impactSubtitle: string;
+    impactCounter: string;
+    didYouKnow: string;
+    factText: string;
+    learnMore: string;
+    statsTitle: string;
+    statsSubtitle: string;
+    verified: string;
+    bloodGuide: string;
+    tapToExplore: string;
   };
   checker: {
     step1: string;
@@ -22,6 +33,14 @@ export interface Translation {
     giveTo: string;
     receiveFrom: string;
     supportiveNote: string;
+    pickBloodType: string;
+    liveCompatibilityMap: string;
+    groupsCount: string;
+    whyDonate: string;
+    whyReceive: string;
+    expertInsight: string;
+    selectGroup: string;
+    discoverSecrets: string;
   };
   memory: {
     title: string;
@@ -32,11 +51,42 @@ export interface Translation {
     title: string;
     items: { myth: string; reality: string }[];
   };
+  stats: {
+    title: string;
+    shortageAlert: string;
+    shortageCritical: string;
+    shortageStable: string;
+    shortageLow: string;
+    shortageSimulated: string;
+    globalDistribution: string;
+    percentByType: string;
+    regionalComparison: string;
+    aboByRegion: string;
+    donorRecip: string;
+    rowsDonorColsRecip: string;
+    donorRecipHeader: string;
+    matrixLegend: string;
+    growthTrends: string;
+    growthTrendsDesc: string;
+    sourceWho: string;
+  };
   learn: {
     title: string;
+    interactiveGuide: string;
+    basicsTab: string;
+    mythsTab: string;
+    quizTab: string;
+    aboSystem: string;
+    rhFactor: string;
+    whyMatters: string;
     simpleAbo: string;
     simpleRh: string;
-    whyMatters: string;
+    commonMyth: string;
+    medicalReality: string;
+    testKnowledge: string;
+    quizDesc: string;
+    startQuiz: string;
+    randomQuestions: string;
   };
   more: {
     title: string;
@@ -47,6 +97,13 @@ export interface Translation {
     eligibility: string;
     tracker: string;
     rarity: string;
+    settingsResources: string;
+    trackEligibility: string;
+    digitalId: string;
+    checkEligibility: string;
+    resources: string;
+    appDescription: string;
+    version: string;
   };
   chart: {
     title: string;
@@ -91,6 +148,23 @@ export interface Translation {
     idLabel: string;
     emergencyContact: string;
     validID: string;
+    personalizeId: string;
+    fillDetails: string;
+    yourName: string;
+    tapToReveal: string;
+    canGiveTo: string;
+    canReceiveFrom: string;
+    tapToClose: string;
+    hemoMatchId: string;
+    placeholders: {
+      name: string;
+      age: string;
+      phone: string;
+      location: string;
+      emergencyName: string;
+      emergencyPhone: string;
+      medicalNote: string;
+    };
   };
   disclaimer: {
     title: string;
@@ -125,13 +199,32 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       quickSelect: "Or pick a group below:",
       universalDonor: "Universal Donor",
       universalRecipient: "Universal Receiver",
+      impactTitle: "Community Impact",
+      impactSubtitle: "Tap the drop to simulate a donation",
+      impactCounter: "Simulated Lives Saved",
+      didYouKnow: "Did you know?",
+      factText: "Blood is actually living tissue. It carries oxygen, nutrients, and helps fight infections.",
+      learnMore: "Learn more about blood groups",
+      statsTitle: "Global Statistics",
+      statsSubtitle: "Explore blood type distribution worldwide",
+      verified: "Verified Medical Info",
+      bloodGuide: "Blood Guide",
+      tapToExplore: "Tap to explore",
     },
     checker: {
       step1: "1. Choose a blood group",
-      step2: "2. Here is the result:",
-      giveTo: "You can GIVE blood to:",
-      receiveFrom: "You can RECEIVE blood from:",
-      supportiveNote: "Don't worry, hospitals always double-check everything for safety.",
+      step2: "2. View Compatibility",
+      giveTo: "Can Donate To",
+      receiveFrom: "Can Receive From",
+      supportiveNote: "Always consult with a medical professional for actual blood transfusions. This tool is for educational guidance.",
+      pickBloodType: "Pick a blood type to see compatibility",
+      liveCompatibilityMap: "Live Compatibility Map",
+      groupsCount: "Groups",
+      whyDonate: "can donate to these groups because they share compatible antigens.",
+      whyReceive: "can safely receive blood from these donors without an immune reaction.",
+      expertInsight: "Expert Insight",
+      selectGroup: "Select a blood group",
+      discoverSecrets: "Discover compatibility secrets",
     },
     memory: {
       title: "Quick Memory Trick",
@@ -149,21 +242,59 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         { myth: "O+ is the universal donor", reality: "Actually, only O- is the universal donor." },
       ],
     },
+    stats: {
+      title: "Global Statistics",
+      shortageAlert: "Live Shortage Alert",
+      shortageCritical: "Critical",
+      shortageStable: "Stable",
+      shortageLow: "Low",
+      shortageSimulated: "Simulated real-time data for educational purposes.",
+      globalDistribution: "Global Distribution",
+      percentByType: "Percentage by Blood Type",
+      regionalComparison: "Regional Comparison",
+      aboByRegion: "ABO Distribution by Region",
+      donorRecip: "Donor / Recipient",
+      rowsDonorColsRecip: "Compatibility Matrix",
+      donorRecipHeader: "Donor / Recip",
+      matrixLegend: "Rows: Donor | Columns: Recipient",
+      growthTrends: "Growth Trends",
+      growthTrendsDesc: "Blood group distribution changes slowly over generations due to migration and genetic factors. Type O remains the most resilient and widespread globally.",
+      sourceWho: "Source: World Health Organization",
+    },
     learn: {
       title: "Learn the Basics",
+      interactiveGuide: "Interactive guide to blood groups",
+      basicsTab: "Basics",
+      mythsTab: "Myths",
+      quizTab: "Quiz",
+      aboSystem: "ABO System",
+      rhFactor: "Rh Factor",
+      whyMatters: "Why it Matters",
       simpleAbo: "Your blood type (A, B, AB, or O) is like a unique ID on your cells.",
       simpleRh: "The + or - sign is an extra marker. It helps doctors match you correctly.",
-      whyMatters: "Matching correctly keeps your body safe and healthy during a transfusion.",
+      commonMyth: "Common Myth",
+      medicalReality: "Medical Reality",
+      testKnowledge: "Test Your Knowledge",
+      quizDesc: "Ready to see how much you've learned about blood groups? Take our interactive quiz.",
+      startQuiz: "Start Quiz",
+      randomQuestions: "10 Random Questions per Session",
     },
     more: {
       title: "Settings",
-      language: "Change Language / زبان",
+      language: "Language",
       about: "About HemoMatch",
       disclaimer: "Medical Disclaimer",
-      share: "Share with Friends",
-      eligibility: "Can I Donate?",
+      share: "Share App",
+      eligibility: "Eligibility Check",
       tracker: "Donation Tracker",
       rarity: "Blood Rarity",
+      settingsResources: "App settings and resources",
+      trackEligibility: "Track your eligibility",
+      digitalId: "Digital emergency ID",
+      checkEligibility: "Check if you can donate",
+      resources: "Resources",
+      appDescription: "HemoMatch is a premium medical utility designed to simplify blood group compatibility and provide emergency identification tools.",
+      version: "HemoMatch v1.0",
     },
     tracker: {
       title: "Donation Tracker",
@@ -183,6 +314,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       idLabel: "BLOOD ID CARD",
       validID: "VERIFIED MEDICAL DATA",
       emergencyContact: "EMERGENCY CONTACT",
+      personalizeId: "Personalize Your ID",
+      fillDetails: "Fill in your details to update the card live",
+      yourName: "Your Name",
+      tapToReveal: "Tap to reveal",
+      canGiveTo: "Can Give To",
+      canReceiveFrom: "Can Receive From",
+      tapToClose: "Tap anywhere to close",
+      hemoMatchId: "HemoMatch Medical ID",
+      placeholders: {
+        name: "John Doe",
+        age: "25",
+        phone: "+1 234 567 890",
+        location: "New York, USA",
+        emergencyName: "Jane Doe",
+        emergencyPhone: "+1 987 654 321",
+        medicalNote: "Any allergies or medical conditions...",
+      },
       form: {
         name: "Full Name",
         bloodGroup: "Blood Group",
@@ -250,13 +398,32 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       quickSelect: "یا نیچے سے ایک گروپ منتخب کریں:",
       universalDonor: "یونیورسل ڈونر",
       universalRecipient: "یونیورسل وصول کنندہ",
+      impactTitle: "کمیونٹی پر اثر",
+      impactSubtitle: "عطیہ کی نقل کرنے کے لیے قطرے پر ٹیپ کریں",
+      impactCounter: "بچائی گئی فرضی زندگیاں",
+      didYouKnow: "کیا آپ جانتے ہیں؟",
+      factText: "خون دراصل زندہ ٹشو ہے۔ یہ آکسیجن اور غذائی اجزاء لے جاتا ہے اور انفیکشن سے لڑنے میں مدد کرتا ہے۔",
+      learnMore: "بلڈ گروپس کے بارے میں مزید جانیں",
+      statsTitle: "عالمی اعداد و شمار",
+      statsSubtitle: "دنیا بھر میں خون کی اقسام کی تقسیم دیکھیں",
+      verified: "تصدیق شدہ طبی معلومات",
+      bloodGuide: "بلڈ گائیڈ",
+      tapToExplore: "دریافت کرنے کے لیے ٹیپ کریں",
     },
     checker: {
       step1: "1. بلڈ گروپ منتخب کریں",
-      step2: "2. یہ رہا نتیجہ:",
-      giveTo: "آپ ان کو خون دے سکتے ہیں:",
-      receiveFrom: "آپ ان سے خون لے سکتے ہیں:",
-      supportiveNote: "پریشان نہ ہوں، ہسپتال ہمیشہ حفاظت کے لیے ہر چیز کو دوبارہ چیک کرتے ہیں۔",
+      step2: "2. مطابقت دیکھیں",
+      giveTo: "عطیہ دے سکتے ہیں",
+      receiveFrom: "وصول کر سکتے ہیں",
+      supportiveNote: "اصل خون کی منتقلی کے لیے ہمیشہ طبی پیشہ ور سے مشورہ کریں۔ یہ ٹول تعلیمی رہنمائی کے لیے ہے۔",
+      pickBloodType: "مطابقت دیکھنے کے لیے بلڈ ٹائپ منتخب کریں",
+      liveCompatibilityMap: "لائیو مطابقت کا نقشہ",
+      groupsCount: "گروپس",
+      whyDonate: "ان گروپس کو خون دے سکتے ہیں کیونکہ ان کے اینٹیجنز مطابقت رکھتے ہیں۔",
+      whyReceive: "بغیر کسی مدافعتی ردعمل کے ان عطیہ دہندگان سے محفوظ طریقے سے خون حاصل کر سکتے ہیں۔",
+      expertInsight: "ماہرانہ بصیرت",
+      selectGroup: "بلڈ گروپ منتخب کریں",
+      discoverSecrets: "مطابقت کے راز دریافت کریں",
     },
     memory: {
       title: "یاد رکھنے کا آسان طریقہ",
@@ -274,21 +441,59 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         { myth: "O+ یونیورسل ڈونر ہے", reality: "دراصل، صرف O- ہی یونیورسل ڈونر ہے۔" },
       ],
     },
+    stats: {
+      title: "عالمی اعداد و شمار",
+      shortageAlert: "خون کی کمی کا الرٹ",
+      shortageCritical: "انتہائی اہم",
+      shortageStable: "مستحکم",
+      shortageLow: "کم",
+      shortageSimulated: "تعلیمی مقاصد کے لیے فرضی ڈیٹا۔",
+      globalDistribution: "عالمی تقسیم",
+      percentByType: "بلڈ ٹائپ کے لحاظ سے فیصد",
+      regionalComparison: "علاقائی موازنہ",
+      aboByRegion: "علاقے کے لحاظ سے ABO تقسیم",
+      donorRecip: "عطیہ دہندہ / وصول کنندہ",
+      rowsDonorColsRecip: "مطابقت کا میٹرکس",
+      donorRecipHeader: "عطیہ دہندہ / وصول کنندہ",
+      matrixLegend: "قطاریں: عطیہ دہندہ | کالم: وصول کنندہ",
+      growthTrends: "ترقی کے رجحانات",
+      growthTrendsDesc: "ہجرت اور جینیاتی عوامل کی وجہ سے خون کے گروپ کی تقسیم نسلوں میں آہستہ آہستہ بدلتی ہے۔ ٹائپ O عالمی سطح پر سب سے زیادہ پھیلا ہوا ہے۔",
+      sourceWho: "ماخذ: عالمی ادارہ صحت",
+    },
     learn: {
       title: "بنیادی باتیں سیکھیں",
+      interactiveGuide: "بلڈ گروپس کے لیے انٹرایکٹو گائیڈ",
+      basicsTab: "بنیادی باتیں",
+      mythsTab: "غلط فہمیاں",
+      quizTab: "کوئز",
+      aboSystem: "ABO سسٹم",
+      rhFactor: "Rh فیکٹر",
+      whyMatters: "یہ کیوں ضروری ہے",
       simpleAbo: "آپ کے خون کی قسم (A، B، AB، یا O) آپ کے خلیوں پر ایک منفرد آئی ڈی کی طرح ہے۔",
       simpleRh: "+ یا - کا نشان ایک اضافی مارکر ہے۔ یہ ڈاکٹروں کو آپ کو صحیح طریقے سے میچ کرنے میں مدد کرتا ہے۔",
-      whyMatters: "صحیح طریقے سے میچ کرنا ٹرانسفیوژن کے دوران آپ کے جسم کو محفوظ اور صحت مند رکھتا ہے۔",
+      commonMyth: "عام غلط فہمی",
+      medicalReality: "طبی حقیقت",
+      testKnowledge: "اپنے علم کی جانچ کریں",
+      quizDesc: "دیکھنا چاہتے ہیں کہ آپ نے بلڈ گروپس کے بارے میں کتنا سیکھا ہے؟ ہمارا کوئز لیں۔",
+      startQuiz: "کوئز شروع کریں",
+      randomQuestions: "فی سیشن 10 بے ترتیب سوالات",
     },
     more: {
       title: "ترتیبات",
-      language: "زبان تبدیل کریں / Change Language",
+      language: "زبان",
       about: "ہیمو میچ کے بارے میں",
       disclaimer: "طبی دستبرداری",
-      share: "دوستوں کے ساتھ شیئر کریں",
-      eligibility: "کیا میں عطیہ کر سکتا ہوں؟",
+      share: "ایپ شیئر کریں",
+      eligibility: "اہلیت کی جانچ",
       tracker: "عطیہ ٹریکر",
       rarity: "خون کی نایابی",
+      settingsResources: "ایپ کی ترتیبات اور وسائل",
+      trackEligibility: "اپنی اہلیت کو ٹریک کریں",
+      digitalId: "ڈیجیٹل ایمرجنسی آئی ڈی",
+      checkEligibility: "چیک کریں کہ کیا آپ عطیہ کر سکتے ہیں",
+      resources: "وسائل",
+      appDescription: "ہیمو میچ ایک پریمیم میڈیکل یوٹیلیٹی ہے جو بلڈ گروپ کی مطابقت کو آسان بنانے اور ہنگامی شناختی ٹولز فراہم کرنے کے لیے بنائی گئی ہے۔",
+      version: "ہیمو میچ v1.0",
     },
     tracker: {
       title: "عطیہ ٹریکر",
@@ -308,6 +513,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       idLabel: "بلڈ آئی ڈی کارڈ",
       validID: "تصدیق شدہ طبی ڈیٹا",
       emergencyContact: "ہنگامی رابطہ",
+      personalizeId: "اپنی آئی ڈی کو ذاتی بنائیں",
+      fillDetails: "کارڈ کو لائیو اپ ڈیٹ کرنے کے لیے اپنی تفصیلات درج کریں",
+      yourName: "آپ کا نام",
+      tapToReveal: "دیکھنے کے لیے ٹیپ کریں",
+      canGiveTo: "عطیہ دے سکتے ہیں",
+      canReceiveFrom: "وصول کر سکتے ہیں",
+      tapToClose: "بند کرنے کے لیے کہیں بھی ٹیپ کریں",
+      hemoMatchId: "ہیمو میچ میڈیکل آئی ڈی",
+      placeholders: {
+        name: "علی خان",
+        age: "25",
+        phone: "+92 300 1234567",
+        location: "لاہور، پاکستان",
+        emergencyName: "احمد خان",
+        emergencyPhone: "+92 300 7654321",
+        medicalNote: "کوئی الرجی یا طبی حالات...",
+      },
       form: {
         name: "پورا نام",
         bloodGroup: "بلڈ گروپ",

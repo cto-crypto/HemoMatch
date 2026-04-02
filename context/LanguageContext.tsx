@@ -15,6 +15,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('en');
 
+  const t = TRANSLATIONS[language];
+  const isRTL = language === 'ur';
+
   useEffect(() => {
     const savedLang = localStorage.getItem('app-language') as Language;
     if (savedLang && (savedLang === 'en' || savedLang === 'ur') && savedLang !== language) {
@@ -22,13 +25,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, [language]);
 
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
+  }, [language, isRTL]);
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('app-language', lang);
   };
-
-  const t = TRANSLATIONS[language];
-  const isRTL = language === 'ur';
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>

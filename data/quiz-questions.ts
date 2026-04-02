@@ -1,81 +1,114 @@
 export interface QuizQuestion {
   id: number;
   question: string;
+  questionUr: string;
   options: string[];
+  optionsUr: string[];
   correctAnswer: number; // Index of the correct option
   explanation: string;
+  explanationUr: string;
 }
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question: "Which blood type is known as the 'Universal Donor'?",
+    questionUr: "کون سا بلڈ گروپ 'یونیورسل ڈونر' کے نام سے جانا جاتا ہے؟",
     options: ["A+", "B-", "O-", "AB+"],
+    optionsUr: ["A+", "B-", "O-", "AB+"],
     correctAnswer: 2,
-    explanation: "O negative (O-) blood can be given to patients of any blood type because it lacks A, B, and Rh antigens."
+    explanation: "O negative (O-) blood can be given to patients of any blood type because it lacks A, B, and Rh antigens.",
+    explanationUr: "O نیگیٹو (O-) خون کسی بھی بلڈ گروپ کے مریضوں کو دیا جا سکتا ہے کیونکہ اس میں A، B، اور Rh اینٹی جینز نہیں ہوتے۔"
   },
   {
     id: 2,
     question: "Which blood type is known as the 'Universal Recipient'?",
+    questionUr: "کون سا بلڈ گروپ 'یونیورسل ریسیپیئنٹ' (وصول کنندہ) کے نام سے جانا جاتا ہے؟",
     options: ["O-", "AB+", "A-", "B+"],
+    optionsUr: ["O-", "AB+", "A-", "B+"],
     correctAnswer: 1,
-    explanation: "AB positive (AB+) individuals can receive blood from any type because their immune system recognizes all antigens."
+    explanation: "AB positive (AB+) individuals can receive blood from any type because their immune system recognizes all antigens.",
+    explanationUr: "AB پازیٹو (AB+) افراد کسی بھی قسم کا خون حاصل کر سکتے ہیں کیونکہ ان کا مدافعتی نظام تمام اینٹی جینز کو پہچانتا ہے۔"
   },
   {
     id: 3,
     question: "What does the 'Rh' in blood types stand for?",
+    questionUr: "بلڈ گروپس میں 'Rh' کا کیا مطلب ہے؟",
     options: ["Rhesus", "Red Hematology", "Reactive Hemoglobin", "Rare Health"],
+    optionsUr: ["ریسس (Rhesus)", "ریڈ ہیماتولوجی", "ری ایکٹو ہیموگلوبن", "رئیر ہیلتھ"],
     correctAnswer: 0,
-    explanation: "Rh stands for Rhesus, named after the Rhesus monkey where the factor was first discovered."
+    explanation: "Rh stands for Rhesus, named after the Rhesus monkey where the factor was first discovered.",
+    explanationUr: "Rh کا مطلب ریسس (Rhesus) ہے، جس کا نام ریسس بندر کے نام پر رکھا گیا ہے جہاں یہ فیکٹر پہلی بار دریافت ہوا تھا۔"
   },
   {
     id: 4,
     question: "If a person has type A blood, what antibodies do they naturally produce?",
+    questionUr: "اگر کسی شخص کا بلڈ گروپ A ہے، تو وہ قدرتی طور پر کون سے اینٹی باڈیز پیدا کرتا ہے؟",
     options: ["Anti-A", "Anti-B", "Anti-O", "None"],
+    optionsUr: ["اینٹی-A", "اینٹی-B", "اینٹی-O", "کوئی نہیں"],
     correctAnswer: 1,
-    explanation: "People with type A blood produce Anti-B antibodies to protect against type B blood cells."
+    explanation: "People with type A blood produce Anti-B antibodies to protect against type B blood cells.",
+    explanationUr: "ٹائپ A خون والے لوگ ٹائپ B خون کے خلیات سے بچانے کے لیے اینٹی-B اینٹی باڈیز پیدا کرتے ہیں۔"
   },
   {
     id: 5,
     question: "Which of these is NOT a component of blood?",
+    questionUr: "ان میں سے کون سا خون کا حصہ نہیں ہے؟",
     options: ["Plasma", "Platelets", "Neurons", "Leukocytes"],
+    optionsUr: ["پلازما", "پلیٹلیٹس", "نیورونز (Neurons)", "لیوکوسائٹس"],
     correctAnswer: 2,
-    explanation: "Neurons are nerve cells, not blood components. Blood consists of plasma, red cells, white cells (leukocytes), and platelets."
+    explanation: "Neurons are nerve cells, not blood components. Blood consists of plasma, red cells, white cells (leukocytes), and platelets.",
+    explanationUr: "نیورونز اعصابی خلیات ہیں، خون کے اجزاء نہیں۔ خون پلازما، سرخ خلیات، سفید خلیات (لیوکوسائٹس) اور پلیٹلیٹس پر مشتمل ہوتا ہے۔"
   },
   {
     id: 6,
     question: "How long do red blood cells typically live in the body?",
+    questionUr: "سرخ خون کے خلیات عام طور پر جسم میں کتنے دن زندہ رہتے ہیں؟",
     options: ["10 days", "120 days", "1 year", "Forever"],
+    optionsUr: ["10 دن", "120 دن", "1 سال", "ہمیشہ"],
     correctAnswer: 1,
-    explanation: "Red blood cells circulate for about 120 days before being broken down by the spleen and liver."
+    explanation: "Red blood cells circulate for about 120 days before being broken down by the spleen and liver.",
+    explanationUr: "سرخ خون کے خلیات تلی اور جگر کے ذریعے ٹوٹنے سے پہلے تقریباً 120 دنوں تک گردش کرتے ہیں۔"
   },
   {
     id: 7,
     question: "What is the most common blood type in the world?",
+    questionUr: "دنیا میں سب سے عام بلڈ گروپ کون سا ہے؟",
     options: ["A+", "O+", "B+", "AB-"],
+    optionsUr: ["A+", "O+", "B+", "AB-"],
     correctAnswer: 1,
-    explanation: "O positive (O+) is the most common blood type globally, found in about 37-40% of the population."
+    explanation: "O positive (O+) is the most common blood type globally, found in about 37-40% of the population.",
+    explanationUr: "O پازیٹو (O+) عالمی سطح پر سب سے عام بلڈ گروپ ہے، جو تقریباً 37-40% آبادی میں پایا جاتا ہے۔"
   },
   {
     id: 8,
     question: "What is the rarest common blood type?",
+    questionUr: "سب سے نایاب عام بلڈ گروپ کون سا ہے؟",
     options: ["O-", "B-", "AB-", "A-"],
+    optionsUr: ["O-", "B-", "AB-", "A-"],
     correctAnswer: 2,
-    explanation: "AB negative (AB-) is typically the rarest of the eight main blood types, found in less than 1% of the population."
+    explanation: "AB negative (AB-) is typically the rarest of the eight main blood types, found in less than 1% of the population.",
+    explanationUr: "AB نیگیٹو (AB-) عام طور پر آٹھ اہم بلڈ گروپس میں سب سے نایاب ہے، جو 1% سے بھی کم آبادی میں پایا جاتا ہے۔"
   },
   {
     id: 9,
     question: "Can an O+ person receive O- blood?",
+    questionUr: "کیا O+ شخص O- خون حاصل کر سکتا ہے؟",
     options: ["Yes", "No", "Only in emergencies", "Only if they are female"],
+    optionsUr: ["جی ہاں", "جی نہیں", "صرف ہنگامی حالات میں", "صرف اگر وہ خاتون ہوں"],
     correctAnswer: 0,
-    explanation: "Yes, O+ can receive O- because O- lacks the Rh factor that O+ already has."
+    explanation: "Yes, O+ can receive O- because O- lacks the Rh factor that O+ already has.",
+    explanationUr: "جی ہاں، O+ خون O- حاصل کر سکتا ہے کیونکہ O- میں Rh فیکٹر نہیں ہوتا جو O+ میں پہلے سے موجود ہوتا ہے۔"
   },
   {
     id: 10,
     question: "What is the primary function of white blood cells?",
+    questionUr: "سفید خون کے خلیات کا بنیادی کام کیا ہے؟",
     options: ["Carry oxygen", "Clot blood", "Fight infection", "Transport nutrients"],
+    optionsUr: ["آکسیجن لے جانا", "خون جمانا", "انفیکشن سے لڑنا", "غذائی اجزاء کی منتقلی"],
     correctAnswer: 2,
-    explanation: "White blood cells (leukocytes) are the primary defense mechanism of the immune system against pathogens."
+    explanation: "White blood cells (leukocytes) are the primary defense mechanism of the immune system against pathogens.",
+    explanationUr: "سفید خون کے خلیات (لیوکوسائٹس) پیتھوجینز کے خلاف مدافعتی نظام کا بنیادی دفاعی طریقہ کار ہیں۔"
   },
   {
     id: 11,
